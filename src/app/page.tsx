@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
-import Image from "next/image";
+import { useMutation, useQuery } from "convex/react";
 
 export default function Home() {
   return (
-   <div className="m-10"> home page </div>
+   <div className="m-10">
+    <SignInButton>
+      <Button>login</Button>
+    </SignInButton>
+   </div>
   );
 }
