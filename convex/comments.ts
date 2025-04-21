@@ -21,7 +21,7 @@ export const addComment = mutation({
     },
 });
 
-
+// вывод всех комментариев к интервью
 export const getComments = query({
     args: { interviewId: v.id("interviews") },
     handler: async (ctx, args) => {

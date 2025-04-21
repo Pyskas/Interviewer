@@ -14,6 +14,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CalendarIcon, CheckCircle2Icon, ClockIcon, XCircleIcon } from "lucide-react";
 import { format } from "date-fns";
+import CommentDialog from "@/components/CommentDialog";
 
 type Interview = Doc<"interviews">
 
@@ -113,7 +114,7 @@ const groupedInterviews = groupInterviews(interviews);
                               </Button>
                             </div>
                           )}
-                          {/* <CommentDialog interviewId={interview._id} /> */}
+                          <CommentDialog interviewId={interview._id} />
                         </CardFooter>
                   </Card>
                 );
