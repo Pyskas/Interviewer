@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/localizations": "^3.13.13",
     "@clerk/nextjs": "^6.14.3",
     "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-avatar": "^1.1.6",
