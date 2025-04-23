@@ -33,9 +33,9 @@ function RecordingsPage() {
 
     return <div className="container max-w-7xl mx-auto px-6">
       {/* Шапка */}
-      <h1 className="text-3xl font-bold">Recordings</h1>
+      <h1 className="text-3xl font-bold">Записи</h1>
         <p className="text-muted-foreground my-1">
-          {recordings.length} {recordings.length === 1 ? "recording" : "recordings"} available
+          {recordings.length} {recordings.length === 1 ? "запись" : "записи"} имеется
         </p>
 
         {/* Секция записей */}

@@ -14,6 +14,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CalendarIcon, CheckCircle2Icon, ClockIcon, XCircleIcon } from "lucide-react";
 import { format } from "date-fns";
+import { ru } from 'date-fns/locale';
 import CommentDialog from "@/components/CommentDialog";
 
 type Interview = Doc<"interviews">

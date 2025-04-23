@@ -1,6 +1,7 @@
 import { CallRecording } from "@stream-io/video-react-sdk";
 import toast from "react-hot-toast";
 import { format } from "date-fns";
+import { ru } from 'date-fns/locale';
 import { calculateRecordingDuration } from "@/lib/utils";
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
 import { CalendarIcon, ClockIcon, CopyIcon, PlayIcon } from "lucide-react";

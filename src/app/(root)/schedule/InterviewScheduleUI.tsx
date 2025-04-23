@@ -136,8 +136,8 @@ function InterviewScheduleUI() {
       <div className="flex items-center justify-between">
         {/* Информация шапка */}
         <div>
-          <h1 className="text-3xl font-bold">Interviews</h1>
-          <p className="text-muted-foreground mt-1">Schedule and manage interviews</p>
+          <h1 className="text-3xl font-bold">Интервью</h1>
+          <p className="text-muted-foreground mt-1">Планируйте и оценивайте интервью</p>
         </div>
 
         {/* Форма */}
