@@ -52,7 +52,7 @@ function InterviewScheduleUI() {
   const scheduleMeeting = async () => {
     if (!client || !user) return;
     if (!formData.candidateId || formData.interviewerIds.length === 0) {
-      toast.error("Please select both candidate and at least one interviewer");
+      toast.error("Пожалуйста, выберите кандидата и хотя бы одного интервьюера");
       return;
     }
 
@@ -88,7 +88,7 @@ function InterviewScheduleUI() {
       });
 
       setOpen(false);
-      toast.success("Meeting scheduled successfully!");
+      toast.success("Интервью успешно запланировано!");
 
       setFormData({
         title: "",
@@ -100,7 +100,7 @@ function InterviewScheduleUI() {
       });
     } catch (error) {
       console.error(error);
-      toast.error("Failed to schedule meeting. Please try again.");
+      toast.error("Ошибка при планировании интервью. Попробуйте снова.");
     } finally {
       setIsCreating(false);
     }
@@ -134,54 +134,48 @@ function InterviewScheduleUI() {
   return (
     <div className="container max-w-7xl mx-auto p-6 space-y-8">
       <div className="flex items-center justify-between">
-        {/* Информация шапка */}
         <div>
           <h1 className="text-3xl font-bold">Интервью</h1>
           <p className="text-muted-foreground mt-1">Планируйте и оценивайте интервью</p>
         </div>
 
-        {/* Форма */}
-
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button size="lg">Schedule Interview</Button>
+            <Button size="lg">Запланировать интервью</Button>
           </DialogTrigger>
 
           <DialogContent className="sm:max-w-[500px] h-[calc(100vh-200px)] overflow-auto">
             <DialogHeader>
-              <DialogTitle>Schedule Interview</DialogTitle>
+              <DialogTitle>Запланировать интервью</DialogTitle>
             </DialogHeader>
             <div className="space-y-4 py-4">
-              {/* Заполнение интервью */}
               <div className="space-y-2">
-                <label className="text-sm font-medium">Title</label>
+                <label className="text-sm font-medium">Заголовок</label>
                 <Input
-                  placeholder="Interview title"
+                  placeholder="Введите заголовок интервью"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 />
               </div>
 
-              {/* Форма интервью */}
               <div className="space-y-2">
-                <label className="text-sm font-medium">Description</label>
+                <label className="text-sm font-medium">Описание</label>
                 <Textarea
-                  placeholder="Interview description"
+                  placeholder="Введите описание интервью"
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   rows={3}
                 />
               </div>
 
-              {/* Кандидат */}
               <div className="space-y-2">
-                <label className="text-sm font-medium">Candidate</label>
+                <label className="text-sm font-medium">Кандидат</label>
                 <Select
                   value={formData.candidateId}
                   onValueChange={(candidateId) => setFormData({ ...formData, candidateId })}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select candidate" />
+                    <SelectValue placeholder="Выберите кандидата" />
                   </SelectTrigger>
                   <SelectContent>
                     {candidates.map((candidate) => (
@@ -193,9 +187,8 @@ function InterviewScheduleUI() {
                 </Select>
               </div>
 
-              {/* Интервьюер */}
               <div className="space-y-2">
-                <label className="text-sm font-medium">Interviewers</label>
+                <label className="text-sm font-medium">Интервьюеры</label>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {selectedInterviewers.map((interviewer) => (
                     <div
@@ -217,7 +210,7 @@ function InterviewScheduleUI() {
                 {availableInterviewers.length > 0 && (
                   <Select onValueChange={addInterviewer}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Add interviewer" />
+                      <SelectValue placeholder="Добавить интервьюера" />
                     </SelectTrigger>
                     <SelectContent>
                       {availableInterviewers.map((interviewer) => (
@@ -230,11 +223,9 @@ function InterviewScheduleUI() {
                 )}
               </div>
 
-              {/* Дата и время */}
               <div className="flex gap-4">
-                {/* Календарь */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Date</label>
+                  <label className="text-sm font-medium">Дата</label>
                   <Calendar
                     mode="single"
                     selected={formData.date}
@@ -244,16 +235,14 @@ function InterviewScheduleUI() {
                   />
                 </div>
 
-                {/* Время */}
-
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Time</label>
+                  <label className="text-sm font-medium">Время</label>
                   <Select
                     value={formData.time}
                     onValueChange={(time) => setFormData({ ...formData, time })}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select time" />
+                      <SelectValue placeholder="Выберите время" />
                     </SelectTrigger>
                     <SelectContent>
                       {TIME_SLOTS.map((time) => (
@@ -266,19 +255,18 @@ function InterviewScheduleUI() {
                 </div>
               </div>
 
-              {/* Кнопка отправки */}
               <div className="flex justify-end gap-3 pt-4">
                 <Button variant="outline" onClick={() => setOpen(false)}>
-                  Cancel
+                  Назад
                 </Button>
                 <Button onClick={scheduleMeeting} disabled={isCreating}>
                   {isCreating ? (
                     <>
                       <Loader2Icon className="mr-2 size-4 animate-spin" />
-                      Scheduling...
+                      Планирование...
                     </>
                   ) : (
-                    "Schedule Interview"
+                    "Запланировать интервью"
                   )}
                 </Button>
               </div>
@@ -287,7 +275,6 @@ function InterviewScheduleUI() {
         </Dialog>
       </div>
 
-      {/* Подгрузка собеседований и ожиданий */}
       {!interviews ? (
         <div className="flex justify-center py-12">
           <Loader2Icon className="size-8 animate-spin text-muted-foreground" />
@@ -301,9 +288,12 @@ function InterviewScheduleUI() {
           </div>
         </div>
       ) : (
-        <div className="text-center py-12 text-muted-foreground">No interviews scheduled</div>
+        <div className="text-center py-12 text-muted-foreground">
+          Интервью не запланировано
+        </div>
       )}
     </div>
   );
 }
+
 export default InterviewScheduleUI;

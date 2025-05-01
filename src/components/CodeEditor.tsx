@@ -39,7 +39,7 @@ function CodeEditor() {
                     </h2>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Choose your language and solve the problem
+                   Выберите ваш язык и решите проблему
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -93,7 +93,7 @@ function CodeEditor() {
               <Card>
                 <CardHeader className="flex flex-row items-center gap-2">
                   <BookIcon className="h-5 w-5 text-primary/80" />
-                  <CardTitle>Problem Description</CardTitle>
+                  <CardTitle>Обьяснение проблемы</CardTitle>
                 </CardHeader>
                 <CardContent className="text-sm leading-relaxed">
                   <div className="prose prose-sm dark:prose-invert max-w-none">
@@ -106,21 +106,21 @@ function CodeEditor() {
               <Card>
                 <CardHeader className="flex flex-row items-center gap-2">
                   <LightbulbIcon className="h-5 w-5 text-yellow-500" />
-                  <CardTitle>Examples</CardTitle>
+                  <CardTitle>Примеры</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ScrollArea className="h-full w-full rounded-md border">
                     <div className="p-4 space-y-4">
                       {selectedQuestion.examples.map((example, index) => (
                         <div key={index} className="space-y-2">
-                          <p className="font-medium text-sm">Example {index + 1}:</p>
+                          <p className="font-medium text-sm">Пример {index + 1}:</p>
                           <ScrollArea className="h-full w-full rounded-md">
                             <pre className="bg-muted/50 p-3 rounded-lg text-sm font-mono">
-                              <div>Input: {example.input}</div>
-                              <div>Output: {example.output}</div>
+                              <div>Ввод: {example.input}</div>
+                              <div>Вывод: {example.output}</div>
                               {example.explanation && (
                                 <div className="pt-2 text-muted-foreground">
-                                  Explanation: {example.explanation}
+                                  Обьяснение: {example.explanation}
                                 </div>
                               )}
                             </pre>
@@ -139,7 +139,7 @@ function CodeEditor() {
                 <Card>
                   <CardHeader className="flex flex-row items-center gap-2">
                     <AlertCircleIcon className="h-5 w-5 text-blue-500" />
-                    <CardTitle>Constraints</CardTitle>
+                    <CardTitle>Ограничения</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ul className="list-disc list-inside space-y-1.5 text-sm marker:text-muted-foreground">

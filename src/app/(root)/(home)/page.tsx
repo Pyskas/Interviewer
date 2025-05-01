@@ -20,20 +20,19 @@ export default function Home() {
   const [modalType, setModalType] = useState<"start" | "join">();
 
 
-  const handleQuickAction = (title: string) => {
-    switch (title) {
-      case "New Call":
-      setModalType("start");
-      setShowModal(true);
-      break;
-    case "Join Interview":
-      setModalType("join");
-      setShowModal(true);
-      break;
+  const handleQuickAction = (id: string) => {
+    switch (id) {
+      case "new-call":
+        setModalType("start");
+        setShowModal(true);
+        break;
+      case "join-interview":
+        setModalType("join");
+        setShowModal(true);
+        break;
       default:
-        router.push(`/${title.toLowerCase()}`);
+        router.push(`/${id}`);
     }
-
   };
 
   if(isLoading) return <LoaderUI />;
@@ -58,25 +57,25 @@ export default function Home() {
           
           {QUICK_ACTIONS.map((action) => (
             <ActionCard 
-              key={action.title}
-              action={action}
-              onClick={() => handleQuickAction(action.title)}
-            />
+            key={action.id}
+            action={action}
+            onClick={() => handleQuickAction(action.id)} 
+          />
           ))}
       </div>
 
       <MeetingModal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title={modalType === "join" ? "Join Meeting" : "Start Meeting"}
+        title={modalType === "join" ? "Присоединиться к интервью" : "Начать интервью"}
         isJoinMeeting={modalType ==="join"}
       />
       </>
     ) : (
       <>
         <div>
-        <h1 className="text-3xl font-bold">Your Interviews</h1>
-        <p className="text-muted-foreground mt-1">View and join your scheduled interviews</p>
+        <h1 className="text-3xl font-bold">Ваши интервью</h1>
+        <p className="text-muted-foreground mt-1">Смотрите и подключайтесь к вашим запланированным интервью</p>
         </div>
 
         <div className="mt-8">
@@ -92,7 +91,7 @@ export default function Home() {
               </div>
           ) : (
               <div className="text-center py-12 text-muted-foreground">
-                You have no scheduled interviews at the moment
+                У вас нету запланированных интервью на данный момент
               </div>
           )}
         </div>

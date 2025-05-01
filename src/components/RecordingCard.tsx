@@ -9,45 +9,44 @@ import { Button } from "./ui/button";
 
 function RecordingCard({ recording }: { recording: CallRecording }) {
 
-    const handleCopyLink = async () => {
-        try {
-            await navigator.clipboard.writeText(recording.url);
-            toast.success("Recording link copied to clipboard");
-        } catch (error) {
-            toast.error("Failed to copy link to clipboard");
-        }
-    };
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(recording.url);
+      toast.success("Ссылка на запись скопирована");
+    } catch (error) {
+      toast.error("Не удалось скопировать ссылку");
+    }
+  };
 
-    const formattedStartTime = recording.start_time
-    ? format(new Date(recording.start_time), "MMM d, yyyy, hh:mm a")
-    : "Unknown";
+  const formattedStartTime = recording.start_time
+    ? format(new Date(recording.start_time), "d MMMM yyyy, HH:mm", { locale: ru })
+    : "Неизвестно";
 
-    const duration =
-        recording.start_time && recording.end_time
-            ? calculateRecordingDuration(recording.start_time, recording.end_time)
-            : "Unknown duration";
+  const duration =
+    recording.start_time && recording.end_time
+      ? calculateRecordingDuration(recording.start_time, recording.end_time)
+      : "Неизвестная продолжительность";
 
   return (
     <Card className="group hover:shadow-md transition-all">
-        {/* Шапка */}
-        <CardHeader className="space-y-1">
-            <div className="space-y-2">
-                <div className="flex flex-col gap-1.5">
-                    <div className="flex items-center text-sm text-muted-foreground gap-2">
-                        <CalendarIcon className="h-3.5 w-3.5" />
-                        <span>{formattedStartTime}</span>
-                    </div>
-                    <div className="flex items-center text-sm text-muted-foreground gap-2">
-                        <ClockIcon className="h-3.5 w-3.5" />
-                        <span>{duration}</span>
-                    </div>
-                </div>
+      {/* Шапка */}
+      <CardHeader className="space-y-1">
+        <div className="space-y-2">
+          <div className="flex flex-col gap-1.5">
+            <div className="flex items-center text-sm text-muted-foreground gap-2">
+              <CalendarIcon className="h-3.5 w-3.5" />
+              <span>{formattedStartTime}</span>
             </div>
-        </CardHeader>
+            <div className="flex items-center text-sm text-muted-foreground gap-2">
+              <ClockIcon className="h-3.5 w-3.5" />
+              <span>{duration}</span>
+            </div>
+          </div>
+        </div>
+      </CardHeader>
 
-        {/* Контент записи */}
-
-        <CardContent>
+      {/* Видео превью */}
+      <CardContent>
         <div
           className="w-full aspect-video bg-muted/50 rounded-lg flex items-center justify-center cursor-pointer group"
           onClick={() => window.open(recording.url, "_blank")}
@@ -57,10 +56,12 @@ function RecordingCard({ recording }: { recording: CallRecording }) {
           </div>
         </div>
       </CardContent>
+
+      {/* Кнопки действий */}
       <CardFooter className="gap-2">
         <Button className="flex-1" onClick={() => window.open(recording.url, "_blank")}>
           <PlayIcon className="size-4 mr-2" />
-          Play Recording
+          Смотреть запись
         </Button>
         <Button variant="secondary" onClick={handleCopyLink}>
           <CopyIcon className="size-4" />
@@ -69,4 +70,5 @@ function RecordingCard({ recording }: { recording: CallRecording }) {
     </Card>
   );
 }
+
 export default RecordingCard;

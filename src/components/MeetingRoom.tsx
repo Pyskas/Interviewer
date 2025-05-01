@@ -68,10 +68,10 @@ function MeetingRoom() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem onClick={() => setLayout("grid")}>
-                        Grid View
+                        Вид сетки
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => setLayout("speaker")}>
-                        Speaker View
+                        Вид разговаривающего
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>

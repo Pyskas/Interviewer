@@ -17,7 +17,6 @@ function MeetingModal( { isOpen, onClose, title, isJoinMeeting }: MeetingModalPr
 
     const handleStart = () => {
         if(isJoinMeeting) {
-            // если это полная ссылка проверяет ID
             const meetingId = meetingUrl.split("/").pop();
             if(meetingId) joinMeeting(meetingId);
         } else {
@@ -38,7 +37,7 @@ function MeetingModal( { isOpen, onClose, title, isJoinMeeting }: MeetingModalPr
 
             {isJoinMeeting && (
                 <Input 
-                placeholder="Paste meeting link here.."
+                placeholder="Вставьте ссылку сюда.."
                 value={meetingUrl}
                 onChange={(e) => setMeetingUrl(e.target.value)}
                 />
@@ -46,10 +45,10 @@ function MeetingModal( { isOpen, onClose, title, isJoinMeeting }: MeetingModalPr
 
             <div className="flex justify-end gap-3">
                 <Button variant="outline" onClick={onClose}>
-                    Cancel
+                    Назад
                 </Button>
                 <Button onClick={handleStart} disabled={isJoinMeeting && !meetingUrl.trim()}>
-                    {isJoinMeeting ? "Join Meeting" : "Start Meeting"}
+                    {isJoinMeeting ? "Присоединиться к интервью" : "Начать интервью"}
                 </Button>
             </div>
            </div>

@@ -41,7 +41,7 @@ const groupedInterviews = groupInterviews(interviews);
     <div className="container mx-auto py-10">
     <div className="flex items-center mb-8">
       <Link href="/schedule">
-        <Button>Schedule New Interview</Button>
+        <Button>Запланировать интервью</Button>
       </Link>
     </div>
 
@@ -81,17 +81,17 @@ const groupedInterviews = groupInterviews(interviews);
                       {/* Дата и время */}
 
                       <CardContent className="p-4">
-                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                            <div className="flex items-center gap-1">
-                              <CalendarIcon className="h-4 w-4" />
-                              {format(startTime, "MMM dd")}
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <ClockIcon className="h-4 w-4" />
-                              {format(startTime, "hh:mm a")}
-                            </div>
-                          </div>
-                        </CardContent>
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-1">
+                          <CalendarIcon className="h-4 w-4" />
+                          {format(startTime, "dd MMMM", { locale: ru })}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <ClockIcon className="h-4 w-4" />
+                          {format(startTime, "HH:mm", { locale: ru })}
+                        </div>
+                      </div>
+                    </CardContent>
 
                       {/* Прошел или провалил кнопка */}
 
@@ -103,7 +103,7 @@ const groupedInterviews = groupInterviews(interviews);
                                 onClick={() => handleStatusUpdate(interview._id, "succeeded")}
                               >
                                 <CheckCircle2Icon className="h-4 w-4 mr-2" />
-                                Pass
+                                Прошёл
                               </Button>
                               <Button
                                 variant="destructive"
@@ -111,7 +111,7 @@ const groupedInterviews = groupInterviews(interviews);
                                 onClick={() => handleStatusUpdate(interview._id, "failed")}
                               >
                                 <XCircleIcon className="h-4 w-4 mr-2" />
-                                Fail
+                                Провалил
                               </Button>
                             </div>
                           )}
